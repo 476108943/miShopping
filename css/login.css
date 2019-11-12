@@ -1,0 +1,121 @@
+
+body {
+    font: 12px "microsoft yahei", Arial, Helvetica, sans-serif;
+    color: #666;
+    margin: 0px;
+    padding: 0px;
+}
+.modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background:url(../img/login-bg.png)no-repeat center;
+    z-index:1000;
+    background-size: auto 588px;
+}
+.modal-dialog{
+	width:500px;
+	margin:120px auto;
+}
+.modal-content {
+    background: #fff;
+    padding: 16px 43px;
+    text-align: center;
+    color: #757575;
+    position: fixed;
+    right:100px;
+    top:25%;
+}
+.modal-content h4{
+    font:24px/1 "";
+    color:#666;
+}
+.modal-content input {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0;
+    line-height: 2em;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 6px 6px;
+}
+#logo-button{
+    background: #EF5B00;
+    color: #ffffff;
+    margin-bottom: 24px;
+    font:18px/50px "";
+}
+.othser-legend{
+    border-top: 1px solid #e0e0e0;
+    border-bottom:0;
+    border-left:0;
+    border-right:0;
+    padding-top: 10px;
+    color:#b0b0b0;
+    font-size: 14px;
+}
+
+
+a{color:#333; text-decoration:none;}
+a:hover{color:#FF6700;text-decoration:none;}
+.other-link{
+    list-style: none;
+    text-align: center;
+    color: #e0e0e0;
+
+}
+.other-link a{
+    padding: 5px;
+    font-size: 14px;
+    color:#999;
+}
+.icon-type{
+    width: 30px;
+    height: 30px;
+    margin: 0 12px;
+    display: inline-block;
+    background:#aaa ;
+    border-radius: 50%;
+}
+.icon-type:hover{
+    background:#FF6700 ;
+}
+.icon-type-qq,
+.icon-type-sina,
+.icon-type-zfb{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/otherlogin.png) no-repeat;
+    margin: 5px auto 0;
+
+}
+
+.icon-type .icon-type-qq{
+    width: 17px;
+    background-position: -21px 0;
+    margin-left: 8px;
+}.icon-type .icon-type-sina{
+    background-position: -38px 0;
+}
+.icon-type .icon-type-zfb{
+    width: 27px;
+    background-position: -57px 0;
+    margin-top: 6px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+#error{
+    box-sizing: border-box;
+    width: 400px;
+    margin: 10px 0;
+    line-height: 2em;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 6px 6px;
+    display: none;
+    color:red;
+}

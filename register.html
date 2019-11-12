@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米注册</title>
+    <link rel="stylesheet" href="css/platform-1.css">
+    <link rel="stylesheet" href="css/easyform.css">
+    <script src="library/jquery.js"></script>
+    <script src="library/easyform.js"></script>
+    <style>
+        #logo {
+            height: 88px;
+        }
+
+        h4 {
+            font: 30px/1 "";
+            font-weight: normal;
+            color: #333;
+        }
+
+        #reg {
+            background: #ff6700;
+            width: 150px;
+            font: 14px/42px "";
+        }
+
+        #reg:hover {
+            background: rgba(255, 103, 0, .7);
+        }
+
+        #login {
+            background: #ff6700;
+            width: 150px;
+            font: 14px/42px "";
+            margin-left: 100px;
+        }
+
+        #login:hover {
+            background: rgba(255, 103, 0, .7);
+        }
+
+        #outer {
+            background: #f9f9f9;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #inner {
+            background: #fff;
+            position: fixed;
+            top: 50px;
+            left: 20%;
+            right: 20%;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        table tbody {
+            padding: 0 40px;
+        }
+
+        table tr td.text {
+            padding: 0 40px;
+        }
+
+        table tr td {
+            font: 14px/1 "";
+            color: #333;
+            font-weight: normal;
+            padding-bottom: 5px;
+        }
+
+        input {
+            width: 220px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="logo"><img src="img/logo-footer.png" alt=""></div>
+            <h4>注册小米账号</h4>
+            <div id="regBox">
+                <form id="reg-form" action="" method="post">
+                    <table>
+                        <tr>
+                            <td class="text">用户名</td>
+                            <td><input name="uid" type="text" id="uid"
+                                    data-easyform="length:8 16;char-normal;real-time;ajax:ajax_demo(1);"
+                                    data-message="用户名必须为8-16位的英文字母或数字" data-easytip="position:right;class:easy-red;"
+                                    data-message-ajax="用户名已存在!" placeholder="8-16位的英文字母或数字">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text">密码</td>
+                            <td><input name="psw1" type="password" id="psw1" data-easyform="length:8 16;"
+                                    data-message="密码必须为8—16位" data-easytip="class:easy-red;" placeholder="密码必须为8—16位">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text">确认密码</td>
+                            <td><input name="psw2" type="password" id="psw2" data-easyform="length:8 16;equal:#psw1;"
+                                    data-message="两次密码输入不一致" data-easytip="class:easy-red;" placeholder="重复密码"></td>
+                        </tr>
+                        <tr>
+                            <td class="text">邮箱地址</td>
+                            <td><input name="email" type="text" id="email"
+                                    data-easyform="email;real-time;easytip:false;" data-message="Email格式不正确"
+                                    data-easytip="class:easy-red;" placeholder="例：Xiaomi@xxx.com"></td>
+                        </tr>
+                        <tr>
+                            <td class="text">昵称</td>
+                            <td><input name="nickname" type="text" id="nickname" data-easyform="length:2 16;"
+                                    data-easytip="class:easy-red;position:right;" placeholder="请输入昵称"></td>
+                        </tr>
+                    </table>
+
+                    <div class="buttons" style="margin-top: 50px;">
+                        <input id="reg" value="立即注册" type="submit" style="margin-right:20px; margin-top:20px;">
+                        <input id="login" value="已有账号，去登录" type="button" style="margin-right:45px; margin-top:20px;"
+                            onclick='location.href="login.html"'>
+                    </div>
+
+                    <br class="clear">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        var v = $('#reg-form').easyform();
+
+        v.is_submit = false;
+
+        v.error = function (ef, i, r) {
+            //console.log("Error事件：" + i.id + "对象的值不符合" + r + "规则");
+        };
+
+        v.success = function (ef) {
+            // console.log("成功");
+        };
+
+        v.complete = function (ef) {
+            // console.log("完成");
+        };
+    });
+
+
+
+    if (window.localStorage.userArr) {
+        var array = JSON.parse(window.localStorage.userArr);
+    } else {
+        array = [];
+    }
+
+    $("#reg").bind("click", function () {
+        var username = $("#uid").val();
+        var password = $("#psw1").val();
+        var nickname = $("#nickname").val();
+        for (var i = 0; i < array.length; i++) {
+            if (username == array[i].username) {
+                alert("该账号已存在");
+                return;
+            }
+        }
+        var obj = {
+            username: username,
+            password: password,
+            nickname:nickname
+        }
+        array.push(obj);
+        window.localStorage.userArr = JSON.stringify(array);
+        alert("用户创建成功");
+        window.location.href = "../miShopping/login.html";
+    })
+</script>
+
+</html>

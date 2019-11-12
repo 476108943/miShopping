@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情</title>
+    <link rel="icon" href="https://s01.mifile.cn/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/car.css">
+    <link rel="stylesheet" href="css/jquery-ui-style.css">
+    <style>
+    .ui-dialog-titlebar{
+        background:#ff6700;
+        color:#fff;
+        border-radius:0;
+    }
+    .ui-state-default .ui-icon{background:#ff6700 url(img/close.png)no-repeat center;background-size:16px;}
+    #dialog-confirm>p>span{font:14px/2 "";color:#ff6700;}
+    </style>
+</head>
+
+<body style="overflow-x: hidden;">
+    <header>
+        <div class="margin">
+            <a href="index.html"><img src="img/logo-footer.png" alt="logo"></a>
+            <h4>我的购物车</h4>
+        </div>
+    </header>
+    <footer>
+        <div class="Customer margin">
+            <ul class="shouhou">
+                <li>
+                    <a href="#"><span></span>预约维修服务</a>
+                </li>
+                <span>丨</span>
+                <li>
+                    <a href="#"><span></span>7天无理由退货</a>
+                </li>
+                <span>丨</span>
+                <li>
+                    <a href="#"><span></span>15天免费换货</a>
+                </li>
+                <span>丨</span>
+                <li>
+                    <a href="#"><span></span>满150元包邮</a>
+                </li>
+                <span>丨</span>
+                <li>
+                    <a href="#"><span></span>520余家售后网点</a>
+                </li>
+                <li>
+
+                </li>
+            </ul>
+            <div id="hps">
+                <div class="rt">
+                    <div>400-100-5678</div>
+                    <p>周一至周日 8:00-18:00</p>
+                    <p>（仅收市话费）</p>
+                    <a href="#" class="hv">
+                        人工客服
+                    </a>
+                </div>
+                <ul class="help">
+                    <li>
+                        <h4>帮助中心</h4>
+                        <a href="#">账户管理</a>
+                        <a href="#">购物指南</a>
+                        <a href="#">订单操作</a>
+                    </li>
+                    <li>
+                        <h4>服务支持</h4>
+                        <a href="#">售后政策</a>
+                        <a href="#">自助服务</a>
+                        <a href="#">相关下载</a>
+                    </li>
+                    <li>
+                        <h4>线下门店</h4>
+                        <a href="#">小米之家</a>
+                        <a href="#">服务网点</a>
+                        <a href="#">零售网点</a>
+                    </li>
+                    <li>
+                        <h4>关于小米</h4>
+                        <a href="#">了解小米</a>
+                        <a href="#">加入小米</a>
+                        <a href="#">联系我们</a>
+                    </li>
+                    <li>
+                        <h4>关注我们</h4>
+                        <a href="#">新浪微博</a>
+                        <a href="#">小米部落</a>
+                        <a href="#">官方微信</a>
+                    </li>
+                    <li>
+                        <h4>特色服务</h4>
+                        <a href="#">F码通道</a>
+                        <a href="#">小米移动</a>
+                        <a href="#">防伪查询</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <footer id="ft">
+        <div class="bottom margin">
+            <p class="lt footer-logo"><img src="img/logo-footer.png" alt="logo"></p>
+            <div class="lt">
+                <a href="#">小米商城</a>丨
+                <a href="#">MIUI</a>丨
+                <a href="#">米聊</a>丨
+                <a href="#">多看书城</a>丨
+                <a href="#">小米路由器</a>丨
+                <a href="#">视频电话</a>丨
+                <a href="#">小米后院</a>丨
+                <a href="#">小米天猫店</a>丨
+                <a href="#">小米淘宝直营店</a>丨
+                <a href="#">小米网盟</a>丨
+                <a href="#">问题反馈</a>丨
+                <a href="#">Select Region</a>
+                <p>
+                    &copy;<a href="#">mi.com</a>京ICP证110507号
+                    <a href="#"> 京ICP备10046444号 </a>
+                    <a href="#"> 京公网安备11010802020134号</a>
+                    <a href="#">京网文[2014]0059-0009号</a>
+                </p>
+                违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试
+                <div class="log">
+                    <a href="#"><img src="img/log1.png"></a>
+                    <a href="#"><img src="img/log2.png"></a>
+                    <a href="#"><img src="img/log3.png"></a>
+                    <a href="#"><img src="img/log4.png"></a>
+                    <a href="#"><img src="img/log5.png"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="btm"></div>
+    <div id="dialog-confirm" title="添加成功" display="none">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>已添加到购物车</p>
+    </div>
+
+</body>
+<script src="library/jquery.js"></script>
+<script src="library/js/jquery-ui.min.js"></script>
+<script src="library/ajax.js"></script>
+<script src="library/cookie.js"></script>
+<script>
+    $(".nav>a").mouseover(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+
+    if(localStorage.nowLogin){
+        var sLogin = $("#login-status>a:last")
+        sLogin.html(`亲爱的 ： ${localStorage.nowLogin}，欢迎登录`).attr('href','#');
+        sLogin.prev().prev().html("退出").attr('href','#');
+        var exit = sLogin.prev().prev();
+        if(exit.html() == "退出"){
+            exit.bind("click",function(){
+                localStorage.nowLogin = "";
+                window.location.reload();
+            })
+        }
+        // var ccc = "[{'img':'img/p1.png','name':'小米8','price':'3699'},{'img':'img/p1.png','name':'小米8','price:3699'}]";
+        // localStorage.setItem("car",JSON.stringify(ccc))
+        // console.log(JSON.parse(localStorage.car))
+        // if(localStorage.car){
+        //     var shopList = $(".shoppingCart>div:last");
+        //     var carArr = JSON.parse(localStorage.car);
+        //     var str = "";
+        //     for(var i = 0; i < carArr.length; i++){
+        //         str+="1";
+        //         str += `<b>
+        //                     <img src="${carArr[i].img}" alt="">
+        //                     <p>${carArr[i].name}</p>
+        //                     <span>${carArr[i].price}<i>元</i></span>
+        //                 </b>`;
+        //     }
+        //     shopList[0].innerHTML = str;
+        //     shopList.children().each(()=>{
+        //         var bottom = -98;
+        //         bottom -= 98;
+        //         shopList[0].style.bottom = bottom + "px";
+        //         shopList[0].style.zIndex = 22;
+        //     }).css("z-index",22);
+        // }
+    }
+    if(localStorage.display){
+        ajaxGet("http://localhost/1910-server/miShopping/library/goods.json",function(res){
+            var res = JSON.parse(res);
+            for(var i = 0; i < res.length; i++){
+                if(localStorage.display == res[i].goodsId){
+                    $(".show-right").children("h4").html(`${res[i].name}`);
+                    $(".show-right p b").html(`${res[i].show}`);
+                    $(".show-right p span s").html(`${res[i].price}`);
+                    $(".allP h3 i").html(`${res[i].price}`);
+                    $(".show-left").html(`<img src = "${res[i].imgshow}">`);
+                    $(".show-title div span").html(`${res[i].name}`);
+                    var config = res[i].config.split(",");
+                    for(var j = 0; j < config.length; j++){
+                        var d = $("<div>");
+                            d.html(`${config[j]}`).addClass("config");
+                        $("#allConfig").append(d);
+                    }
+                    $("#buy").attr("gid" ,`${res[i].goodsId}`);
+                }
+            }
+        })
+    }
+    $("#buy").on("click",()=>{
+        $(function() {
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height:140,
+                modal: true,
+                buttons: {
+                    "去结算": function() {
+                        window.location.href="car.html"
+                    },
+                    "继续购买": function() {
+                    $( this ).dialog( "close" );
+                    }
+                }
+            });
+        });
+    })
+</script>
+
+</html>

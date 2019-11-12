@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+.margin {
+    width: 1226px;
+    margin: 0 auto;
+}
+
+header{}
+
+
+.Customer .shouhou{
+    display: flex;
+    justify-content: space-between;
+}
+.Customer .shouhou li {
+    padding-left: 45px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 19px;
+}
+
+.Customer .shouhou span {
+    font-size: 15px;
+    float: left;
+    padding-left: 66px;
+    color: #B0B0B0;
+}
+
+.Customer .shouhou {
+    height: 56px;
+    line-height: 56px;
+    float: left;
+    width: 1230px;
+}
+#hps .rt{
+    float:right;
+    width:220px;
+}
+#hps ul {
+    float: left;
+    height: 134px;
+}
+
+#hps ul.help>li {
+    float: left;
+    margin: 28px;
+    padding-right: 45px;
+}
+
+#hps ul li a {
+    display: block;
+    margin: 10px 0 0;
+    font-size: 12px;
+}
+
+#hps>div {
+    width: 251px;
+    height: 134px;
+    border-left: 1px solid #e0e0e0;
+    text-align: center;
+    color: #616161;
+    margin: 6px 16px;
+}
+
+#hps>div>div {
+    margin: 0 0 5px;
+    font-size: 22px;
+    color: #ff6700;
+}
+
+#hps>div>p {
+    margin: 0 0 16px;
+    font-size: 12px;
+}
+
+#hps {
+    height: 200px;
+    background:#f5f5f5;
+}
+
+#ft {
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    clear: both;
+    background:#f5f5f5;
+}
+
+.bottom {
+    border: 1px solid #f5f5f5;
+    clear: both;
+    height: 56px;
+    margin: 20px auto;
+    display:flex;
+}
+
+.bottom:before {
+    content: "";
+    overflow: hidden;
+    clear: both;
+}
+
+.bottom .footer-logo {
+    width: 57px;
+    height: 57px;
+}
+
+
+.bottom div.lt{
+    font:12px/18px "";
+    color:#757575;
+}
+
+.bottom .lt p {
+    margin: 4px 0px;
+}
+
+.bottom div.log {
+    margin-top: 16px;
+}
+.bottom div.log a img{
+    height:28px;
+}
+.btm {
+    border-top:1px solid #f5f5f5;
+    height:100px;
+    background: #f5f5f5 url(../img/slogan2016.png) no-repeat center;
+}
+footer{
+    background:#f5f5f5;
+}
+footer a:hover{
+    color:#ff6700;
+}
+.hv{
+    display:block;
+    height:40px;
+    width:150px;
+    border:1px solid #FF6A0A;
+    border-radius:3px;
+    color:#FF6A0A;
+    margin:0 auto;
+    font:16px/40px "";
+}
+.hv:hover{
+    color:#fff;
+    background:#FF6A0A;
+}

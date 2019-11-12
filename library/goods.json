@@ -1,0 +1,73 @@
+[{
+    "img":"img/p1.png",
+    "name":"小米9 Pro 5G",
+    "price":"3699",
+    "des":"5G双卡全网通，骁龙855Plus",
+    "goodsId":"1",
+    "imgshow":"img/forex.jpg",
+    "show":"5G双卡全网通超高速网络 / 骁龙855Plus旗舰处理器 / 40W有线闪充+30W无线闪充+10W无线反充，4000mAh长续航 / 4800万全焦段三摄 / 超振感横向线性马达 / VC液冷散热 / 高色准三星AMOLED屏幕 / 多功能NFC / 赠送小米云服务1TB云存储",
+    "config":"12G+256G,梦之白,标配"
+},{
+    "img":"img/p2.png",
+    "name":"Redmi 8",
+    "price":"799",
+    "des":"5000mAh超长续航",
+    "goodsId":"2",
+    "imgshow":"img/show2.jpg",
+    "show":"5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22英寸水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+    "config":"3G+32G,宝石蓝,标配"
+},{
+    "img":"img/p3.png",
+    "name":"Redmi Note 8 Pro",
+    "price":"1399",
+    "des":"6400万全场景四摄",
+    "goodsId":"3",
+    "imgshow":"img/show3.jpg",
+    "show":"6400万旗舰级全场景四摄 / 前置2000万 AI美颜相机 / G90T专业游戏芯片，液冷散热 / 6.53英寸水滴全面屏 / 4500mAh大电量 / 标配18W快充 / 康宁大猩猩保护玻璃 / 多功能NFC / 红外遥控功能 / Game Turbo2.0游戏加速",
+    "config":"6G+128G,冰翡翠,标配"
+},{
+    "img":"img/p4.png",
+    "name":"Redmi Note 8",
+    "price":"999",
+    "des":"千元4800万四摄",
+    "goodsId":"4",
+    "imgshow":"img/show4.jpg",
+    "show":"4800万全场景四摄 / 前置1300万美颜相机 / 骁龙665处理器 / 4000mAh超长续航 / 标配18W快充 / 超线性扬声器 / 90%高屏占比 / 康宁大猩猩保护玻璃 / 6.3英寸水滴全面屏",
+    "config":"6G+64G,皓月白,标配"
+},{
+    "img":"img/p5.png",
+    "name":"Redmi K20 Pro 尊享版",
+    "price":"2699",
+    "des":"骁龙855 Plus， 弹出全面屏",
+    "goodsId":"5",
+    "imgshow":"img/show5.jpg",
+    "show":"高通骁龙855 Plus处理器 / 最高可选12GB+512GB大内存 / 索尼4800万超广角三摄 / 前置2000万升降式相机 / 6.39英寸AMOLED极界全面屏 / 3D四曲面玻璃机身 / 4000mAh超长续航 / 标配27W充电器 / 8层石墨立体散热 / 第七代屏下指纹解锁 / 多功能NFC / 双频GPS导航",
+    "config":"12G+512G,冰川蓝,标配"
+},{
+    "img":"img/p6.png",
+    "name":"Redmi Note 7",
+    "price":"1099",
+    "des":"4800万拍照千元机",
+    "goodsId":"6",
+    "imgshow":"img/show6.jpg",
+    "show":"4800万拍照千元机 / “满血版”骁龙660处理器 / 品质“小金刚”，18个月超长质保 / 4000mAh 大电量 / 6.3英寸水滴全面屏 / USB-C 接口，方便耐用 / 支持快充 4 协议",
+    "config":"6G+64G,镜花水月,标配"
+},{
+    "img":"img/p7.png",
+    "name":"Redmi 7",
+    "price":"899",
+    "des":"4000mAh超长续航",
+    "goodsId":"7",
+    "imgshow":"img/show7.jpg",
+    "show":"4000mAh大电量 / 骁龙632八核处理器 / 6.26英寸水滴全面屏，德国莱茵 TÜV 认证护眼屏 / 18个月超长质保，康宁第五代大猩猩玻璃盖板 / 支持大字体、大音量模式，收音机、红外遥控功能 / 1200万AI双摄，1.25μm大像素相机",
+    "config":"4G+64G,梦幻蓝,标配"
+},{
+    "img":"img/p8.png",
+    "name":"Redmi 7A",
+    "price":"539",
+    "des":"小巧大电量 持久流畅",
+    "goodsId":"8",
+    "imgshow":"img/show8.jpg",
+    "show":"4000mAh超长续航 / 骁龙8核处理器 / 标配10W快充 / AI人脸解锁 / 大字体，大音量，无线收音机 / 整机生活防泼溅 / 极简模式，亲情守护",
+    "config":"3G+32G,磨砂黑,标配"
+}]

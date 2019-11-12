@@ -1,0 +1,312 @@
+@charset "utf-8";
+
+
+nav {
+    width: 1226px;
+    margin: 0 auto;
+}
+
+nav div.top {
+    height: 100px;
+}
+
+nav div.top a.logo {
+    width: 234px;
+    float: left;
+    margin: 22px 0;
+}
+
+nav div.nav {
+    float: left;
+    width: 697px;
+    display: flex;
+    position: relative;
+}
+
+nav div.nav span {
+    text-decoration: none;
+    color: #333;
+    line-height: 100px;
+    padding-right: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+
+}
+
+nav div.nav span .nav-menu-back {
+    height: 230px;
+    width: 3000px;
+    position: absolute;
+    left: -800px;
+    background: #fff;
+    border-top: 1px solid#e0e0e0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    display: none;
+    overflow-x: hidden
+}
+
+nav div.nav span:hover .nav-menu-back {
+    display: block;
+    overflow-x: hidden
+}
+
+nav div.nav span:hover {
+    color: #ff6700;
+}
+
+nav div.nav span ul {
+    position: absolute;
+    left: 19%;
+    width: 1226px;
+    height: 201px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav div.nav span ul li {
+    width: 204px;
+    height: 201px;
+    position: relative;
+    text-align: center;
+    padding: 35px 12px 0;
+}
+
+nav div.nav span ul li:after {
+    content: "";
+    position: absolute;
+    top: 35px;
+    right: 0;
+    height: 100px;
+    width: 1px;
+    background: #e0e0e0;
+}
+
+nav div.nav span ul li.last-nav-menu:after {
+    display: none;
+}
+
+nav div.nav span .nav-menu-pic img {
+    width: 160px;
+}
+
+nav div.nav span .title {
+    width: 180px;
+    height: 20px;
+    color: #333;
+    font: 12px/20px "";
+}
+
+nav div.nav span .price {
+    width: 180px;
+    height: 20px;
+    color: #ff6700;
+    font: 13px/20px "";
+}
+
+nav div.search {
+    float: right;
+    margin: 25px 0;
+
+}
+
+nav div.search form input {
+    width: 223px;
+    height: 48px;
+    padding: 0;
+    float: right;
+    border: 1px solid #b0b0b0;
+    font-size: 16px;
+}
+
+nav div.search form input[type="submit"] {
+    width: 48px;
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+    border-left: 0px solid #b0b0b0;
+    background: #fff url(../img/search1.png)no-repeat;
+    background-size: 24px;
+    background-position: center;
+    cursor: pointer;
+}
+
+nav div.search form input[type="submit"]:hover {
+    background-color: #ff6700;
+    border-color: #ff6700;
+    color: #fff;
+    background: #ff6700 url(../img/search2.png)no-repeat;
+    background-size: 24px;
+    background-position: center;
+
+}
+
+.margin {
+    width: 1226px;
+    margin: 0 auto;
+}
+#show{
+    margin-top:5px;
+}
+#show .show-title{height:63px;width:100%;box-shadow: 0 2px 10px rgba(0, 0, 0, .15);margin-bottom:10px;}
+#show .show-title .margin span{font:400 18px/60px "";color:#212121;float:left;}
+#show .show-title .margin i{font:12px/60px "";color:#212121;float:left;margin-left:5px;}
+#show .show-title .margin a{font:12px/60px "";color:#616161;float:left;margin-left:5px;}
+#show .show-main{display: flex;justify-content: space-between;}
+#show .show-main .show-left img{width:600px;}
+
+#show .show-main .show-right{}
+#show .show-main .show-right h4{font:normal 24px/1 "";color:#212121;margin-top:20px;}
+#show .show-main .show-right p{font:14px/1.5 "";color:#b0b0b0;padding:8px 0 20px;}
+#show .show-main .show-right p a{color:#ff4a00;}
+#show .show-main .show-right p span{font:18px/1 "";color:#ff6700;margin:14px 0 0;padding:12px 0 20px;}
+#show .show-main .show-right p span s{color:#ff6700;}
+#show .show-main .show-right h5{font:18px/42px "";color:#333;}
+#show .show-main .show-right div.config{color:#ff6700;margin:0 10px;height:42px;text-align:center;padding:0 27px;border:1px solid #ff6700;width:200px;font:14px/42px "";margin-top:20px;cursor:pointer;}
+#show .show-main .show-right div.allP{background:#f9f9fa;margin-top:30px;}
+#show .show-main .show-right div.allP h3{font:24px/72px "";color:#ff6700;}
+#show .show-main .show-right button{font:16px/54px "";color:#fff;background:#ff6700;border:none;margin-top:40px;}
+#show .show-main .show-right .under{margin-top:20px;}
+#show .show-main .show-right .under i{background:url(../img/duigou.png)no-repeat center;display:inline-block;height:14px;width:20px;background-size:20px;}
+
+.price-ex h4{font:22px/1 "";padding:0 22px;color:#333;}
+
+.Customer .shouhou{
+    display: flex;
+    justify-content: space-between;
+}
+.Customer .shouhou li {
+    padding-left: 45px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 19px;
+}
+
+.Customer .shouhou span {
+    font-size: 15px;
+    float: left;
+    padding-left: 66px;
+    color: #B0B0B0;
+}
+
+.Customer .shouhou {
+    height: 56px;
+    line-height: 56px;
+    float: left;
+    width: 1230px;
+}
+#hps .rt{
+    float:right;
+    width:220px;
+}
+#hps ul {
+    float: left;
+    height: 134px;
+}
+
+#hps ul.help>li {
+    float: left;
+    margin: 28px;
+    padding-right: 45px;
+}
+
+#hps ul li a {
+    display: block;
+    margin: 10px 0 0;
+    font-size: 12px;
+}
+
+#hps>div {
+    width: 251px;
+    height: 134px;
+    border-left: 1px solid #e0e0e0;
+    text-align: center;
+    color: #616161;
+    margin: 6px 16px;
+}
+
+#hps>div>div {
+    margin: 0 0 5px;
+    font-size: 22px;
+    color: #ff6700;
+}
+
+#hps>div>p {
+    margin: 0 0 16px;
+    font-size: 12px;
+}
+
+#hps {
+    height: 200px;
+    background:#f5f5f5;
+}
+
+#ft {
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    clear: both;
+    background:#f5f5f5;
+}
+
+.bottom {
+    border: 1px solid #f5f5f5;
+    clear: both;
+    height: 56px;
+    margin: 20px auto;
+    display:flex;
+}
+
+.bottom:before {
+    content: "";
+    overflow: hidden;
+    clear: both;
+}
+
+.bottom .footer-logo {
+    width: 57px;
+    height: 57px;
+}
+
+
+.bottom div.lt{
+    font:12px/18px "";
+    color:#757575;
+}
+
+.bottom .lt p {
+    margin: 4px 0px;
+}
+
+.bottom div.log {
+    margin-top: 16px;
+}
+.bottom div.log a img{
+    height:28px;
+}
+.btm {
+    border-top:1px solid #f5f5f5;
+    height:100px;
+    background: #f5f5f5 url(../img/slogan2016.png) no-repeat center;
+}
+footer{
+    background:#f5f5f5;
+}
+footer a:hover{
+    color:#ff6700;
+}
+.hv{
+    display:block;
+    height:40px;
+    width:150px;
+    border:1px solid #FF6A0A;
+    border-radius:3px;
+    color:#FF6A0A;
+    margin:0 auto;
+    font:16px/40px "";
+}
+.hv:hover{
+    color:#fff;
+    background:#FF6A0A;
+}
