@@ -658,22 +658,68 @@
         })
     }
     $("#buy").on("click",()=>{
-        $(function() {
-            $( "#dialog-confirm" ).dialog({
-                resizable: false,
-                height:140,
-                modal: true,
-                buttons: {
-                    "去结算": function() {
-                        window.location.href="car.html"
-                    },
-                    "继续购买": function() {
-                    $( this ).dialog( "close" );
+        if(localStorage.nowLogin){
+            setBuy();
+            $(function() {
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height:140,
+                    modal: true,
+                    buttons: {
+                        "去结算": function() {
+                            window.location.href="car.html"
+                        },
+                        "继续购买": function() {
+                        $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            });
+        }else{
+            $("#dialog-confirm").attr("title","请登录").children("p").html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>您还未登录');
+
+            $(function() {
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height:140,
+                    modal: true,
+                    buttons: {
+                        "已有账号，去登录": function() {
+                            window.location.href="login.html"
+                        },
+                        "去注册": function() {
+                            window.location.href="register.html"
+                        }
+                    }
+                });
+            });
+        }
+    });
+    function setBuy(){
+        var id = $("#buy").attr("gid");
+        var goods = localStorage.buy ? JSON.parse(localStorage.buy) : [];
+            if(goods.length == 0){
+                goods.push({
+                    id:id,
+                    num:1
+                })
+            }else{
+                var onoff = true;
+                for(var i=0;i<goods.length;i++){
+                    if(goods[i].id === id){
+                        goods[i].num++;
+                        onoff = false;
                     }
                 }
-            });
-        });
-    })
+
+                if(onoff){
+                    goods.push({
+                        id:id,
+                        num:1
+                    })
+                }
+        }
+    }
 </script>
 
 </html>

@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>商品详情</title>
+    <title>我的购物车</title>
     <link rel="icon" href="https://s01.mifile.cn/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/car.css">
     <link rel="stylesheet" href="css/jquery-ui-style.css">
+    <link rel="stylesheet" href="css/car.css">
     <style>
     .ui-dialog-titlebar{
         background:#ff6700;
@@ -28,8 +28,57 @@
         <div class="margin">
             <a href="index.html"><img src="img/logo-footer.png" alt="logo"></a>
             <h4>我的购物车</h4>
+            <span>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span>
+            <i></i>
+            <a href="login.html" id="login">登录</a><span>|</span><a href="register.html" id="reg">注册</a>
         </div>
     </header>
+    <main id="main">
+        <div class="margin goods-list">
+            <div class="list-head">
+                <div class="col-check">
+                    <s>√</s>
+                    全选
+                </div>
+                <div class="col-img"></div>
+                <div class="col-name">商品名称</div>
+                <div class="col-price">单价</div>
+                <div class="col-num">数量</div>
+                <div class="col-total">小计</div>
+                <div class="col-action">操作</div>
+            </div>
+            <div class="list-body">
+                <div class="list-item">
+                    <div class="col-check">
+                        <s>√</s>
+                    </div>
+                    <div class="col-img">
+                        <img src="img/p1.png" alt="">
+                    </div>
+                    <div class="col-name">小米水质TDS检测笔 白色</div>
+                    <div class="col-price">39<b>元</b></div>
+                    <div class="col-num">
+                        <a href="javascript:void(0)" class="red">
+                            -
+                        </a>
+                        <input type="text" value="1">
+                        <a href="javascript:void(0)" class="add">
+                            +
+                        </a>
+                    </div>
+                    <div class="col-total">39<b>元</b></div>
+                    <div class="col-action"><i>&times;</i></div>
+                </div>
+            </div>
+            <div id="jian"></div>
+            <div class="list-bottom">
+                <a href="index.html">继续购物</a>
+                <span>|&nbsp;共<b>2</b>件商品，已选择<b>2</b>件</span>
+                <i>合计：<b>98</b>元</i>
+                <button>去结算</button>
+            </div>
+        </div>
+    </main>
     <footer>
         <div class="Customer margin">
             <ul class="shouhou">
@@ -50,7 +99,7 @@
                 </li>
                 <span>丨</span>
                 <li>
-                    <a href="#"><span></span>520余家售后网点</a>
+                    <a href="#"><span></span>520家售后网点</a>
                 </li>
                 <li>
 
@@ -150,22 +199,17 @@
 <script src="library/ajax.js"></script>
 <script src="library/cookie.js"></script>
 <script>
-    $(".nav>a").mouseover(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-    })
-
-
     if(localStorage.nowLogin){
-        var sLogin = $("#login-status>a:last")
+        var sLogin = $("#login");
         sLogin.html(`亲爱的 ： ${localStorage.nowLogin}，欢迎登录`).attr('href','#');
-        sLogin.prev().prev().html("退出").attr('href','#');
-        var exit = sLogin.prev().prev();
+        sLogin.next().next().html("退出").attr('href','#');
+        var exit = sLogin.next().next();
         if(exit.html() == "退出"){
             exit.bind("click",function(){
                 localStorage.nowLogin = "";
                 window.location.reload();
             })
-        }
+        }}
         // var ccc = "[{'img':'img/p1.png','name':'小米8','price':'3699'},{'img':'img/p1.png','name':'小米8','price:3699'}]";
         // localStorage.setItem("car",JSON.stringify(ccc))
         // console.log(JSON.parse(localStorage.car))
@@ -189,46 +233,7 @@
         //         shopList[0].style.zIndex = 22;
         //     }).css("z-index",22);
         // }
-    }
-    if(localStorage.display){
-        ajaxGet("http://localhost/1910-server/miShopping/library/goods.json",function(res){
-            var res = JSON.parse(res);
-            for(var i = 0; i < res.length; i++){
-                if(localStorage.display == res[i].goodsId){
-                    $(".show-right").children("h4").html(`${res[i].name}`);
-                    $(".show-right p b").html(`${res[i].show}`);
-                    $(".show-right p span s").html(`${res[i].price}`);
-                    $(".allP h3 i").html(`${res[i].price}`);
-                    $(".show-left").html(`<img src = "${res[i].imgshow}">`);
-                    $(".show-title div span").html(`${res[i].name}`);
-                    var config = res[i].config.split(",");
-                    for(var j = 0; j < config.length; j++){
-                        var d = $("<div>");
-                            d.html(`${config[j]}`).addClass("config");
-                        $("#allConfig").append(d);
-                    }
-                    $("#buy").attr("gid" ,`${res[i].goodsId}`);
-                }
-            }
-        })
-    }
-    $("#buy").on("click",()=>{
-        $(function() {
-            $( "#dialog-confirm" ).dialog({
-                resizable: false,
-                height:140,
-                modal: true,
-                buttons: {
-                    "去结算": function() {
-                        window.location.href="car.html"
-                    },
-                    "继续购买": function() {
-                    $( this ).dialog( "close" );
-                    }
-                }
-            });
-        });
-    })
+    
 </script>
-
+    
 </html>
