@@ -179,7 +179,6 @@
 <script src="library/ajax.js"></script>
 <script src="library/cookie.js"></script>
 <script>
-
     if(localStorage.nowLogin){
         var sLogin = $("#login");
         sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
@@ -228,7 +227,7 @@
             this.load();
 
             // 5.事件委托绑定事件
-            // this.addEvent();
+            this.addEvent();
         }
         load(){
             var that = this;
@@ -237,13 +236,12 @@
                 // 2.读取到cookie
 
                 that.goods = localStorage.buy ? JSON.parse(localStorage.buy) : [];
-                // 3.拿到cookie中的id与所有商品数据的goodsId做比较
                 that.display();
             })
         }
         display(){
-            var str = "<div class='list-item'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
-            //var num = 0;
+            this.allP = 0;
+            var str = "";
             var nowId = localStorage.nowLogin ? JSON.parse(localStorage.nowLogin)[0].id :"";
             $(".list-bottom").hide();
 
@@ -252,15 +250,15 @@
                     for(var j=0;j<this.goods.length;j++){
                         if(this.res[i].goodsId === this.goods[j].id && this.goods[j].buyId === nowId){
                             // 4.相同了，渲染这个数据（就是添加到购物车的商品）
-                            str += `<div class="list-item" ${this.goods[j].id}>
+                            str += `<div class="list-item" index="${j}">
                                         <div class="col-check">
-                                            <s>√</s>
+                                            <s status="on">√</s>
                                         </div>
                                         <div class="col-img">
                                             <img src="${this.res[i].img}" alt="">
                                         </div>
                                         <div class="col-name">${this.res[i].name}</div>
-                                        <div class="col-price">${this.res[i].price}<b>元</b></div>
+                                        <div class="col-price"><b>${this.res[i].price}</b><b>元</b></div>
                                         <div class="col-num">
                                             <a href="javascript:void(0)" class="red">
                                                 -
@@ -270,7 +268,7 @@
                                                 +
                                             </a>
                                         </div>
-                                        <div class="col-total">${this.res[i].price * this.goods[j].num}<b>元</b></div>
+                                        <div class="col-total"><i>${this.res[i].price * this.goods[j].num}</i><b>元</b></div>
                                         <div class="col-action"><i>&times;</i></div>
                                     </div>`;
 
@@ -280,79 +278,91 @@
                         }
                     }
                 }
+                if(!this.goods.length){
+                    str = "<div class='list-error'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
+                    $(".list-bottom").hide();
+                }
             }else{
-                str = "<div class='list-item'><a href='login.html'>还未登录，请登录</a></div>";
-            }
-            this.tbody.innerHTML = str;
+                str = "<div class='list-error'><a href='login.html'>还未登录，请登录</a></div>";
+            };
+                this.tbody.innerHTML = str;
         }
-    //     addEvent(){
-    //         var that = this;
-    //         // 5-1.委托删除的事件
-    //         this.tbody.addEventListener("click",function(eve){
-    //             if(eve.target.tagName == "SPAN"){
-    //                 // 6-1.保存要删除的数据的id
-    //                 that.id = eve.target.parentNode.parentNode.getAttribute("index");
-    //                 // 7-1.删除DOM元素
-    //                 eve.target.parentNode.parentNode.remove();
-    //                 // 8-1.调用更新cookie方法，传入删除操作
-    //                 // 是真正的删除cookie么？不是
-    //                 // 因为只有一条cookie，里面的数据是数组的形式
-    //                 // 从这条cookie中剔除出这个数据
-    //                 that.updateCookie(function(i){
-    //                     that.goods.splice(i,1);
-    //                 });
-    //             }
-    //         })
-    //         // 5-2.委托修改的事件
-    //         this.tbody.addEventListener("input",function(eve){
-    //             if(eve.target.tagName == "INPUT"){
-    //                 if(eve.target.parentNode.previousElementSibling){
-    //                     var aPrice= eve.target.value * eve.target.parentNode.previousElementSibling.innerHTML;
-    //                     eve.target.parentNode.nextElementSibling.innerHTML = aPrice;
-    //                 }
-    //                 // 6-2.保存要修改的数据的id
-    //                 that.id = eve.target.parentNode.parentNode.getAttribute("index");
-    //                 // 7-2.调用更新cookie的方法，传入修改操作
-    //                 that.updateCookie(function(i){
-    //                     that.goods[i].num = eve.target.value;
-    //                 });
-    //             }
-    //         })
-    //         this.tbody.addEventListener("click",function(eve){
-
-    //             if(eve.target.tagName == "BUTTON"){
-    //                 that.goods = [];
-    //                 that.display();
-    //                 that.updateCookie();
-    //             }
-    //         })
-    //         this.tbody.addEventListener("click",function(eve){
-    //             if(eve.target.type == "checkbox"){
-    //                  that.allP += this.parentNode.parentNode[nthLastChild(2)].innerHTML;
-    //                  console.log(this.parentNode.parentNode["nth-last-child(2)"])
-    //             }
-    //             //that.display();
-    //             that.tbody.lastElementChild.lastElementChild.innerHTML = `${that.allP}`;
-    //         })
-    //     }
-    //     updateCookie(cb){
-    //         // 更新cookie的功能方法：
-    //         // U1.遍历数组，拿到所有数据
-    //         for(var i=0;i<this.goods.length;i++){
-    //             // U2.和当前id做比较
-    //             if(this.goods[i].id === this.id){
-    //                 // U3.符合，执行传入的更新操作
-    //                 cb(i);
-    //             }
-    //         }
-    //         // U4.还得再存回去
-    //         setCookie("goods",JSON.stringify(this.goods))
-    //     }
+        addEvent(){
+            var that = this;
+            // 5-1.委托删除的事件
+            this.tbody.addEventListener("click",function(eve){
+                if(eve.target.className === "col-action"){
+                    // 6-1.保存要删除的数据的id
+                    that.id = eve.target.parentNode.getAttribute("index");
+                    // 7-1.删除DOM元素
+                    eve.target.parentNode.remove();
+                    // 8-1.调用更新cookie方法，传入删除操作
+                    // 是真正的删除cookie么？不是
+                    // 因为只有一条cookie，里面的数据是数组的形式
+                    // 从这条cookie中剔除出这个数据
+                    that.update(function(i){
+                        that.goods.splice(i,1);
+                    });
+                }else if(eve.target.parentNode.className === "col-action"){
+                    that.id = eve.target.parentNode.parentNode.getAttribute("index");
+                    eve.target.parentNode.parentNode.remove();
+                    that.update(function(i){
+                        that.goods.splice(i,1);
+                    })
+                }
+                if(!$(".list-item").length){
+                    $(".list-bottom").hide();
+                    that.tbody.innerHTML = "<div class='list-error'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
+                }
+            })
+            // 5-2.委托修改的事件
+            this.tbody.addEventListener("change",function(eve){
+                if(eve.target.tagName == "INPUT"){
+                    that.id = eve.target.parentNode.parentNode.getAttribute("index");
+                    var onePrice = Number(eve.target.parentNode.previousElementSibling.firstElementChild.innerHTML);
+                    eve.target.parentNode.nextElementSibling.firstElementChild.innerHTML = onePrice * Number(eve.target.value);
+                    if(eve.target.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute("status") === "on"){
+                        that.allP = 0;
+                        for(var i =0;i<$(".col-total i").length;i++){
+                            that.allP += Number($(".col-total i")[i].innerHTML);
+                        }
+                        $(".list-bottom i b").html(`${that.allP}`);
+                    }
+                    that.update(function(i){
+                        that.goods[i].num = Number(eve.target.value);
+                    })
+                }
+            })
+            
+            // this.tbody.addEventListener("click",function(eve){
+            //     if(eve.target.type == "checkbox"){
+            //          that.allP += this.parentNode.parentNode[nthLastChild(2)].innerHTML;
+            //          console.log(this.parentNode.parentNode["nth-last-child(2)"])
+            //     }
+            //     //that.display();
+            //     that.tbody.lastElementChild.lastElementChild.innerHTML = `${that.allP}`;
+            // })
+        }
+        
+        update(cb){
+            // 更新cookie的功能方法：
+            // U1.遍历数组，拿到所有数据
+            for(var i=0;i<this.goods.length;i++){
+                // U2.和当前id做比较
+                if(i == this.id){
+                    // U3.符合，执行传入的更新操作
+                    cb(i);
+                }
+            }
+            // U4.还得再存回去
+            localStorage.buy = JSON.stringify(this.goods);
+        }
     }
 
     new Car({
         url:"http://localhost/1910-server/miShopping/library/goods.json",
         tbody:document.querySelector(".list-body")
     })
+
 </script>
 </html>

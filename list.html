@@ -602,7 +602,7 @@
 
     if(localStorage.nowLogin){
         var sLogin = $("#login-status>a:last")
-        sLogin.html(`亲爱的 ： ${localStorage.nowLogin}，欢迎登录`).attr('href','#');
+        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
         sLogin.prev().prev().html("退出").attr('href','#');
         var exit = sLogin.prev().prev();
         if(exit.html() == "退出"){
@@ -708,7 +708,7 @@
             }else{
                 var onoff = true;
                 for(var i=0;i<goods.length;i++){
-                    if(goods[i].id === id){
+                    if(goods[i].id === id && goods[i].buyId === buyId){
                         goods[i].num++;
                         onoff = false;
                     }

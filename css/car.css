@@ -36,6 +36,7 @@ header .margin>i{flex:1;}
 #main .goods-list .list-body .col-check{width:110px;}
 #main .goods-list .list-body .col-check s{display:inline-block;width:20px;font:16px/20px "";text-align:center;cursor: pointer;color:#fff;background:#ff6700;}
 
+#main .goods-list .list-body .list-error{font:14px/70px "";color:#424242;text-align: center;height:70px;display:flex;justify-content: space-between;border-bottom:1px solid #e0e0e0;padding:15px 0;}
 #main .goods-list .list-body .col-img img{width:80px;}
 #main .goods-list .list-body .col-name{font-size:18px;color:#424242;}
 #main .goods-list .list-body .col-total{color:#ff6700;}
