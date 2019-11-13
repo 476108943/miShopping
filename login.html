@@ -69,7 +69,9 @@
         if (flag) { //如果存在
             if (password == array[index].password) {
                 alert("登录成功");
-                localStorage.nowLogin = JSON.parse(localStorage.userArr)[index].nickname;
+                localStorage.nowLogin = JSON.stringify([{
+                    nick:JSON.parse(localStorage.userArr)[index].nickname,
+                    id:JSON.parse(localStorage.userArr)[index].username}]);
                 window.location.href = "../miShopping/index.html";
             } else {
                 alert("密码错误");

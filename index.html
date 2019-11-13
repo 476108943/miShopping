@@ -994,7 +994,7 @@
             this.load();
 
             // this.addEvent();
-            
+
         }
         load(){
             var that = this;
@@ -1060,7 +1060,7 @@
 
     if(localStorage.nowLogin){
         var sLogin = $("#login-status>a:last")
-        sLogin.html(`亲爱的 ： ${localStorage.nowLogin}，欢迎登录`).attr('href','#');
+        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
         sLogin.prev().prev().html("退出").attr('href','#');
         var exit = sLogin.prev().prev();
         if(exit.html() == "退出"){

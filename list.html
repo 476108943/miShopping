@@ -698,10 +698,12 @@
     function setBuy(){
         var id = $("#buy").attr("gid");
         var goods = localStorage.buy ? JSON.parse(localStorage.buy) : [];
+        var buyId = JSON.parse(localStorage.nowLogin)[0].id;
             if(goods.length == 0){
                 goods.push({
                     id:id,
-                    num:1
+                    num:1,
+                    buyId:buyId
                 })
             }else{
                 var onoff = true;
@@ -715,10 +717,13 @@
                 if(onoff){
                     goods.push({
                         id:id,
-                        num:1
+                        num:1,
+                        buyId:buyId
                     })
                 }
+                console.log(goods)
         }
+        localStorage.buy = JSON.stringify(goods);
     }
 </script>
 
