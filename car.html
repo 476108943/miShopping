@@ -13,13 +13,21 @@
     <link rel="stylesheet" href="css/jquery-ui-style.css">
     <link rel="stylesheet" href="css/car.css">
     <style>
-    .ui-dialog-titlebar{
-        background:#ff6700;
-        color:#fff;
-        border-radius:0;
-    }
-    .ui-state-default .ui-icon{background:#ff6700 url(img/close.png)no-repeat center;background-size:16px;}
-    #dialog-confirm>p>span{font:14px/2 "";color:#ff6700;}
+        .ui-dialog-titlebar {
+            background: #ff6700;
+            color: #fff;
+            border-radius: 0;
+        }
+
+        .ui-state-default .ui-icon {
+            background: #ff6700 url(img/close.png)no-repeat center;
+            background-size: 16px;
+        }
+
+        #dialog-confirm>p>span {
+            font: 14px/2 "";
+            color: #ff6700;
+        }
     </style>
 </head>
 
@@ -37,7 +45,7 @@
         <div class="margin goods-list">
             <div class="list-head">
                 <div class="col-check">
-                    <s>√</s>
+                    <s id="allS" status="on">√</s>
                     全选
                 </div>
                 <div class="col-img"></div>
@@ -170,7 +178,7 @@
     </footer>
     <div class="btm"></div>
     <div id="dialog-confirm" title="添加成功" display="none">
-            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>已添加到购物车</p>
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>已添加到购物车</p>
     </div>
 
 </body>
@@ -179,47 +187,48 @@
 <script src="library/ajax.js"></script>
 <script src="library/cookie.js"></script>
 <script>
-    if(localStorage.nowLogin){
+    if (localStorage.nowLogin) {
         var sLogin = $("#login");
-        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
-        sLogin.next().next().html("退出").attr('href','#');
+        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href', '#');
+        sLogin.next().next().html("退出").attr('href', '#');
         var exit = sLogin.next().next();
-        if(exit.html() == "退出"){
-            exit.bind("click",function(){
+        if (exit.html() == "退出") {
+            exit.bind("click", function () {
                 localStorage.nowLogin = "";
                 window.location.reload();
             })
-        }}
-        // var ccc = "[{'img':'img/p1.png','name':'小米8','price':'3699'},{'img':'img/p1.png','name':'小米8','price:3699'}]";
-        // localStorage.setItem("car",JSON.stringify(ccc))
-        // console.log(JSON.parse(localStorage.car))
-        // if(localStorage.car){
-        //     var shopList = $(".shoppingCart>div:last");
-        //     var carArr = JSON.parse(localStorage.car);
-        //     var str = "";
-        //     for(var i = 0; i < carArr.length; i++){
-        //         str+="1";
-        //         str += `<b>
-        //                     <img src="${carArr[i].img}" alt="">
-        //                     <p>${carArr[i].name}</p>
-        //                     <span>${carArr[i].price}<i>元</i></span>
-        //                 </b>`;
-        //     }
-        //     shopList[0].innerHTML = str;
-        //     shopList.children().each(()=>{
-        //         var bottom = -98;
-        //         bottom -= 98;
-        //         shopList[0].style.bottom = bottom + "px";
-        //         shopList[0].style.zIndex = 22;
-        //     }).css("z-index",22);
-        // }
+        }
+    }
+    // var ccc = "[{'img':'img/p1.png','name':'小米8','price':'3699'},{'img':'img/p1.png','name':'小米8','price:3699'}]";
+    // localStorage.setItem("car",JSON.stringify(ccc))
+    // console.log(JSON.parse(localStorage.car))
+    // if(localStorage.car){
+    //     var shopList = $(".shoppingCart>div:last");
+    //     var carArr = JSON.parse(localStorage.car);
+    //     var str = "";
+    //     for(var i = 0; i < carArr.length; i++){
+    //         str+="1";
+    //         str += `<b>
+    //                     <img src="${carArr[i].img}" alt="">
+    //                     <p>${carArr[i].name}</p>
+    //                     <span>${carArr[i].price}<i>元</i></span>
+    //                 </b>`;
+    //     }
+    //     shopList[0].innerHTML = str;
+    //     shopList.children().each(()=>{
+    //         var bottom = -98;
+    //         bottom -= 98;
+    //         shopList[0].style.bottom = bottom + "px";
+    //         shopList[0].style.zIndex = 22;
+    //     }).css("z-index",22);
+    // }
     // if(localStorage.buy){
 
     // }else{
 
     // }
-    class Car{
-        constructor(options){
+    class Car {
+        constructor(options) {
             this.url = options.url
             this.tbody = options.tbody;
             this.allP = 0;
@@ -229,9 +238,9 @@
             // 5.事件委托绑定事件
             this.addEvent();
         }
-        load(){
+        load() {
             var that = this;
-            ajaxGet(this.url,function(res){
+            ajaxGet(this.url, function (res) {
                 that.res = JSON.parse(res);
                 // 2.读取到cookie
 
@@ -239,18 +248,18 @@
                 that.display();
             })
         }
-        display(){
+        display() {
             this.allP = 0;
             var str = "";
-            var nowId = localStorage.nowLogin ? JSON.parse(localStorage.nowLogin)[0].id :"";
+            var nowId = localStorage.nowLogin ? JSON.parse(localStorage.nowLogin)[0].id : "";
             $(".list-bottom").hide();
 
-            if(nowId){
-                for(var i=0;i<this.res.length;i++){
-                    for(var j=0;j<this.goods.length;j++){
-                        if(this.res[i].goodsId === this.goods[j].id && this.goods[j].buyId === nowId){
+            if (nowId) {
+                for (var i = 0; i < this.res.length; i++) {
+                    for (var j = 0; j < this.goods.length; j++) {
+                        if (this.res[i].goodsId === this.goods[j].id && this.goods[j].buyId === nowId) {
                             // 4.相同了，渲染这个数据（就是添加到购物车的商品）
-                            str += `<div class="list-item" index="${j}">
+                            str += `<div class="list-item" index="${j}" pp="${i}">
                                         <div class="col-check">
                                             <s status="on">√</s>
                                         </div>
@@ -278,20 +287,20 @@
                         }
                     }
                 }
-                if(!this.goods.length){
+                if (!this.goods.length) {
                     str = "<div class='list-error'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
                     $(".list-bottom").hide();
                 }
-            }else{
+            } else {
                 str = "<div class='list-error'><a href='login.html'>还未登录，请登录</a></div>";
             };
-                this.tbody.innerHTML = str;
+            this.tbody.innerHTML = str;
         }
-        addEvent(){
+        addEvent() {
             var that = this;
             // 5-1.委托删除的事件
-            this.tbody.addEventListener("click",function(eve){
-                if(eve.target.className === "col-action"){
+            this.tbody.addEventListener("click", function (eve) {
+                if (eve.target.className === "col-action") {
                     // 6-1.保存要删除的数据的id
                     that.id = eve.target.parentNode.getAttribute("index");
                     // 7-1.删除DOM元素
@@ -300,69 +309,142 @@
                     // 是真正的删除cookie么？不是
                     // 因为只有一条cookie，里面的数据是数组的形式
                     // 从这条cookie中剔除出这个数据
-                    that.update(function(i){
-                        that.goods.splice(i,1);
+                    that.update(function (i) {
+                        that.goods.splice(i, 1);
                     });
-                }else if(eve.target.parentNode.className === "col-action"){
+                } else if (eve.target.parentNode.className === "col-action") {
                     that.id = eve.target.parentNode.parentNode.getAttribute("index");
                     eve.target.parentNode.parentNode.remove();
-                    that.update(function(i){
-                        that.goods.splice(i,1);
+                    that.update(function (i) {
+                        that.goods.splice(i, 1);
                     })
                 }
-                if(!$(".list-item").length){
+                if (!$(".list-item").length) {
                     $(".list-bottom").hide();
-                    that.tbody.innerHTML = "<div class='list-error'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
+                    that.tbody.innerHTML =
+                        "<div class='list-error'><a href='index.html'>还没有添加商品到购物车，继续购物</a></div>";
                 }
             })
             // 5-2.委托修改的事件
-            this.tbody.addEventListener("change",function(eve){
-                if(eve.target.tagName == "INPUT"){
+            this.tbody.addEventListener("input", function (eve) {
+                if (eve.target.tagName == "INPUT") {
                     that.id = eve.target.parentNode.parentNode.getAttribute("index");
-                    var onePrice = Number(eve.target.parentNode.previousElementSibling.firstElementChild.innerHTML);
-                    eve.target.parentNode.nextElementSibling.firstElementChild.innerHTML = onePrice * Number(eve.target.value);
-                    if(eve.target.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute("status") === "on"){
+                    var onePrice = Number(eve.target.parentNode.previousElementSibling.firstElementChild
+                        .innerHTML);
+                    eve.target.parentNode.nextElementSibling.firstElementChild.innerHTML = onePrice *
+                        Number(eve.target.value);
+                    if (eve.target.parentNode.parentNode.firstElementChild.firstElementChild.getAttribute(
+                            "status") === "on") {
                         that.allP = 0;
-                        for(var i =0;i<$(".col-total i").length;i++){
+                        for (var i = 0; i < $(".col-total i").length; i++) {
                             that.allP += Number($(".col-total i")[i].innerHTML);
                         }
                         $(".list-bottom i b").html(`${that.allP}`);
                     }
-                    that.update(function(i){
+                    that.update(function (i) {
                         that.goods[i].num = Number(eve.target.value);
                     })
                 }
             })
-            
-            // this.tbody.addEventListener("click",function(eve){
-            //     if(eve.target.type == "checkbox"){
-            //          that.allP += this.parentNode.parentNode[nthLastChild(2)].innerHTML;
-            //          console.log(this.parentNode.parentNode["nth-last-child(2)"])
-            //     }
-            //     //that.display();
-            //     that.tbody.lastElementChild.lastElementChild.innerHTML = `${that.allP}`;
-            // })
-        }
-        
-        update(cb){
-            // 更新cookie的功能方法：
-            // U1.遍历数组，拿到所有数据
-            for(var i=0;i<this.goods.length;i++){
-                // U2.和当前id做比较
-                if(i == this.id){
-                    // U3.符合，执行传入的更新操作
-                    cb(i);
+
+            this.tbody.addEventListener("click", function (eve) {
+                if (eve.target.tagName == "S" && eve.target.getAttribute("status")) {
+                    var status = eve.target.getAttribute("status");
+                    if (status == "on") {
+                        eve.target.style.background = "#e0e0e0";
+                        eve.target.setAttribute("status", "off");
+                        that.allP -= Number(eve.target.parentNode.parentNode.lastElementChild
+                            .previousElementSibling.firstElementChild.innerHTML);
+                    } else if (status == "off") {
+                        eve.target.style.background = "#ff6700";
+                        eve.target.setAttribute("status", "on");
+                        that.allP += Number(eve.target.parentNode.parentNode.lastElementChild
+                            .previousElementSibling.firstElementChild.innerHTML);
+                    }
+                    for( var i=0;i<$(".list-body .list-item s").length;i++){
+                        if($(".list-body .list-item s").eq(i).attr("status") === "off"){
+                            $("#allS").attr("status","off");
+                            $("#allS").css("background","#e0e0e0");
+                            break;
+                        }else{
+                            $("#allS").css("background","#ff6700");
+                        }
+
+                    }
+
+                    
+                    $(".list-bottom i b").html(`${that.allP}`);
                 }
+            })
+
+            $(this.tbody).on("click", (e) => {
+                    that.id = e.target.parentNode.parentNode.getAttribute("pp");
+                    var nownum = $(e.target.parentNode).children().eq(1).val();
+                    if (e.target.className == "red") {
+                        nownum--;
+                        $(e.target.parentNode.children).eq(1).val(nownum);
+                        if ($(e.target.parentNode.parentNode).children().eq(0).children().eq(0).attr(
+                            "status") == "on") {
+                            that.allP -= Number(that.res[that.id].price);
+                            $(".list-bottom i b").html(`${that.allP}`);
+                        }
+                        $(e.target.parentNode).next().children().eq(0).html(
+                            `${Number($(e.target.parentNode).prev().children().eq(0).html()) * nownum}`);
+                    } else if (e.target.className == "add") {
+                        nownum++;
+                        $(e.target.parentNode.children).eq(1).val(nownum);
+                        if ($(e.target.parentNode.parentNode).children().eq(0).children().eq(0).attr(
+                            "status") == "on") {
+                            that.allP += Number(that.res[that.id].price);
+                            $(".list-bottom i b").html(`${that.allP}`);
+                        }
+                        $(e.target.parentNode).next().children().eq(0).html(
+                            `${Number($(e.target.parentNode).prev().children().eq(0).html()) * nownum}`);
+                    }
+                        that.update(function (i) {
+                            that.goods[i].num = nownum;
+                        })
+                    })
+                $("#allS").on("click",()=>{
+                    var allSS = $("#allS").attr("status");
+                    if (allSS == "on") {
+                        $("#allS").css("background","#e0e0e0");
+                        $("#allS").attr("status","off");
+                        that.allP = 0;
+                        $(".list-body .list-item .col-check s").attr("status","off");
+                        $(".list-body .list-item .col-check s").css("background","#e0e0e0");
+                    } else if (allSS == "off") {
+                        $("#allS").css("background","#ff6700");
+                        $("#allS").attr("status","on");
+                        $(".list-body .list-item .col-check s").attr("status","on");
+                        $(".list-body .list-item .col-check s").css("background","#ff6700");
+                        for(var i = 0; i < $(".list-body .list-item .col-total i").length; i++){
+                            that.allP += Number($(".list-body .list-item .col-total i").eq(i).html())
+                        }
+                    }
+                    $(".list-bottom i b").html(`${that.allP}`);
+                })
             }
-            // U4.还得再存回去
-            localStorage.buy = JSON.stringify(this.goods);
+
+            update(cb) {
+                // 更新cookie的功能方法：
+                // U1.遍历数组，拿到所有数据
+                for (var i = 0; i < this.goods.length; i++) {
+                    // U2.和当前id做比较
+                    if (i == this.id) {
+                        // U3.符合，执行传入的更新操作
+                        cb(i);
+                    }
+                }
+                // U4.还得再存回去
+                localStorage.buy = JSON.stringify(this.goods);
+            }
         }
-    }
 
-    new Car({
-        url:"http://localhost/1910-server/miShopping/library/goods.json",
-        tbody:document.querySelector(".list-body")
-    })
-
+        new Car({
+            url: "http://localhost/1910-server/miShopping/library/goods.json",
+            tbody: document.querySelector(".list-body")
+        })
 </script>
+
 </html>
