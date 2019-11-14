@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+
+
 .nav-t {
     height: 40px;
     background-color: #333;
@@ -110,37 +112,42 @@
     text-align: center;
     display: none;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
-    
+
 }
 
 .nav-t div.right div.shoppingCart:hover div {
     transition: all 2s;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
-.nav-t div.right div.shoppingCart b{
+
+.nav-t div.right div.shoppingCart b {
     display: flex;
     justify-content: space-between;
-    cursor: pointer;    
+    cursor: pointer;
 }
-.nav-t div.right div.shoppingCart b img{
-    width:98px;
-    height:98px;
+
+.nav-t div.right div.shoppingCart b img {
+    width: 98px;
+    height: 98px;
 }
-.nav-t div.right div.shoppingCart b p{
-    flex:1;
+
+.nav-t div.right div.shoppingCart b p {
+    flex: 1;
     font-size: 14px;
     color: #aaa;
     line-height: 98px;
     text-align: center;
 }
-.nav-t div.right div.shoppingCart b span{
+
+.nav-t div.right div.shoppingCart b span {
     font-size: 14px;
     color: #aaa;
     line-height: 98px;
     text-align: center;
-    margin-right:30px;
+    margin-right: 30px;
 }
+
 nav {
     width: 1226px;
     margin: 0 auto;
@@ -716,7 +723,7 @@ nav div.search form input[type="submit"]:hover {
 .page .page1 .page1-right {
     overflow: hidden;
     height: 616px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
 .page .page1 .page1-right ul {
@@ -761,7 +768,8 @@ nav div.search form input[type="submit"]:hover {
     color: #ff6700;
     font: 14px/1.5 "";
 }
-.page1 .star_dl dl dd.jg{
+
+.page1 .star_dl dl dd.jg {
     color: #ff6700;
 }
 
@@ -770,10 +778,12 @@ nav div.search form input[type="submit"]:hover {
     z-index: 2;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1)
 }
-.Customer .shouhou{
+
+.Customer .shouhou {
     display: flex;
     justify-content: space-between;
 }
+
 .Customer .shouhou li {
     padding-left: 45px;
     height: 56px;
@@ -794,10 +804,12 @@ nav div.search form input[type="submit"]:hover {
     float: left;
     width: 1230px;
 }
-#hps .rt{
-    float:right;
-    width:220px;
+
+#hps .rt {
+    float: right;
+    width: 220px;
 }
+
 #hps ul {
     float: left;
     height: 134px;
@@ -837,14 +849,14 @@ nav div.search form input[type="submit"]:hover {
 
 #hps {
     height: 200px;
-    background:#f5f5f5;
+    background: #f5f5f5;
 }
 
 #ft {
     width: 100%;
     border: 1px solid #f5f5f5;
     clear: both;
-    background:#f5f5f5;
+    background: #f5f5f5;
 }
 
 .bottom {
@@ -852,7 +864,7 @@ nav div.search form input[type="submit"]:hover {
     clear: both;
     height: 56px;
     margin: 20px auto;
-    display:flex;
+    display: flex;
 }
 
 .bottom:before {
@@ -867,9 +879,9 @@ nav div.search form input[type="submit"]:hover {
 }
 
 
-.bottom div.lt{
-    font:12px/18px "";
-    color:#757575;
+.bottom div.lt {
+    font: 12px/18px "";
+    color: #757575;
 }
 
 .bottom .lt p {
@@ -879,31 +891,38 @@ nav div.search form input[type="submit"]:hover {
 .bottom div.log {
     margin-top: 16px;
 }
-.bottom div.log a img{
-    height:28px;
+
+.bottom div.log a img {
+    height: 28px;
 }
+
 .btm {
-    border-top:1px solid #f5f5f5;
-    height:100px;
+    border-top: 1px solid #f5f5f5;
+    height: 100px;
     background: #f5f5f5 url(../img/slogan2016.png) no-repeat center;
 }
-footer{
-    background:#f5f5f5;
+
+footer {
+    background: #f5f5f5;
 }
-footer a:hover{
-    color:#ff6700;
+
+footer a:hover {
+    color: #ff6700;
 }
-.hv{
-    display:block;
-    height:40px;
-    width:150px;
-    border:1px solid #FF6A0A;
-    border-radius:3px;
-    color:#FF6A0A;
-    margin:0 auto;
-    font:16px/40px "";
+
+.hv {
+    display: block;
+    height: 40px;
+    width: 150px;
+    border: 1px solid #FF6A0A;
+    border-radius: 3px;
+    color: #FF6A0A;
+    margin: 0 auto;
+    font: 16px/40px "";
 }
-.hv:hover{
-    color:#fff;
-    background:#FF6A0A;
+
+.hv:hover {
+    color: #fff;
+    background: #FF6A0A;
 }
+

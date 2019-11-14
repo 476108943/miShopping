@@ -9,13 +9,90 @@
     <link rel="icon" href="https://s01.mifile.cn/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/public.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
     <style>
+        #sss {
+    position: fixed;
+    right: 0;
+    top: 50%;
+}
 
+#sss a {
+    display: block;
+    width: 84px;
+    height: 92px;
+    text-align: center;
+    border: 1px solid #f5f5f5;
+    position: relative;
+    cursor: pointer;
+}
+
+#sss a .ccc {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding-top: 18px;
+    margin: 0 auto 8px;
+    background: url(img/aside1.png)no-repeat center;
+    background-size: 30px;
+    transition: all .3s
+}
+
+#sss .s1 .ccc {
+    background: url(img/aside2.png)no-repeat center;
+}
+
+#sss a:hover .ccc {
+    background: url(img/aside1h.png)no-repeat center;
+    background-size: 30px;
+}
+
+#sss .s1:hover .ccc {
+    background: url(img/aside2h.png)no-repeat center;
+}
+
+#sss a:hover span {
+    color: #ff6700;
+}
+
+#sss a span {
+    font: 14px/1 "";
+    color: #757575;
+}
+
+#sss a .app {
+    position: absolute;
+    right: 0;
+    top: -100px;
+    display: none;
+}
+
+#sss a .app img {
+    width: 100px;
+    height: 100px;
+}
+
+#sss a.app:hover .app {
+    display: block;
+}
     </style>
 </head>
 
 <body style="overflow-x: hidden;">
+    <div id="sss">
+        <a class="aside app">
+            <div class="ccc">
+
+            </div>
+            <span>手机APP</span>
+            <div class="app"><img src="img/app.png" alt="app"></div>
+        </a>
+        <a class="aside s1">
+            <div class="ccc">
+
+            </div>
+            <span>回顶部</span>
+        </a>
+    </div>
     <header>
         <div class="nav-t">
             <div class="center">
@@ -33,7 +110,7 @@
                     <div class="shoppingCart">
                         <a href="car.html">
                             <i><img src="img/shoppingCart1.png" alt="shoppingCart">
-                            <img src="img/shoppingCart2.png" alt="shoppingCart"></i>
+                                <img src="img/shoppingCart2.png" alt="shoppingCart"></i>
                             购物车(<span>0</span>)
                         </a>
                         <div>
@@ -836,17 +913,17 @@
                 </div>
             </div>
             <div class="fenlei">
-                    <img src="img/fenlei2.png" alt="feilei">
+                <img src="img/fenlei2.png" alt="feilei">
+            </div>
+            <div class="page1">
+                <h2>家电</h2>
+                <div class="page1-left"><img src="img/page-left2.png" alt="page-left"></div>
+                <div class="page1-right">
+                    <ul class="json-list">
+
+                    </ul>
                 </div>
-                <div class="page1">
-                    <h2>家电</h2>
-                    <div class="page1-left"><img src="img/page-left2.png" alt="page-left"></div>
-                    <div class="page1-right">
-                        <ul class="json-list">
-    
-                        </ul>
-                    </div>
-                </div>
+            </div>
         </div>
         </div>
         </div>
@@ -961,15 +1038,7 @@
         </div>
     </footer>
     <div class="btm"></div>
-    <aside>
-        <!-- 
 
-
-
-
-
-         -->
-    </aside>
 </body>
 <script src="library/jquery.js"></script>
 <script src="library/ajax.js"></script>
@@ -978,6 +1047,11 @@
 <script>
     $(".nav>a").mouseover(function () {
         $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".s1").click(()=>{
+        $("html").animate({
+            scrollTop:0
+        })
     })
 
     setInterval(function () {
@@ -1000,27 +1074,27 @@
     }, 1000);
 
 
-    class List{
-        constructor(options){
+    class List {
+        constructor(options) {
             this.cont = options.cont;
             this.url = options.url;
 
             this.load();
 
-            // this.addEvent();
+            this.addEvent();
 
         }
-        load(){
+        load() {
             var that = this;
-            ajaxGet(this.url,function(res){
+            ajaxGet(this.url, function (res) {
                 that.res = JSON.parse(res);
                 that.display()
             })
         }
-        display(){
+        display() {
             var str = "";
             var str1 = "";
-            for(var i=0;i<(this.res.length/2);i++){
+            for (var i = 0; i < (this.res.length / 2); i++) {
                 str += `<li gid="${this.res[i].goodsId}">
                             <a gid="${this.res[i].goodsId}">
                                 <div gid="${this.res[i].goodsId}">
@@ -1032,7 +1106,7 @@
                             </a>
                         </li>`;
             }
-            for(let j= parseInt(this.res.length/2);j < this.res.length;j++){
+            for (let j = parseInt(this.res.length / 2); j < this.res.length; j++) {
                 str1 += `<li gid="${this.res[j].goodsId}">
                             <a gid="${this.res[j].goodsId}">
                                 <div gid="${this.res[j].goodsId}">
@@ -1047,21 +1121,29 @@
             this.cont[0].innerHTML = str;
             this.cont[1].innerHTML = str1;
         }
+        addEvent() {
+            $(".json-list").on("click", function (e) {
+                if (e.target.getAttribute("gid")) {
+                    localStorage.display = `${e.target.getAttribute("gid")}`;
+                    window.location.href = "list.html";
+                }
+            })
+        }
     }
 
     new List({
-        url:"http://localhost/1910-server/miShopping/library/goods.json",
-        cont:document.querySelectorAll(".json-list")
+        url: "http://localhost/1910-server/miShopping/library/goods.json",
+        cont: document.querySelectorAll(".json-list")
     });
 
-    if(localStorage.nowLogin){
+    if (localStorage.nowLogin) {
         var sLogin = $("#login-status>a:last")
-        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
-        sLogin.prev().prev().html("退出").attr('href','#');
+        sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href', '#');
+        sLogin.prev().prev().html("退出").attr('href', '#');
         var exit = sLogin.prev().prev();
         $(".shoppingCart span").html(localStorage.getItem("length"));
-        if(exit.html() == "退出"){
-            exit.bind("click",function(){
+        if (exit.html() == "退出") {
+            exit.bind("click", function () {
                 localStorage.nowLogin = "";
                 window.location.reload();
             })
@@ -1090,12 +1172,6 @@
         //     }).css("z-index",22);
         // }
     }
-    $(".json-list").on("click",function(e){
-        if(e.target.getAttribute("gid")){
-            localStorage.display = `${e.target.getAttribute("gid")}`;
-            window.location.href="list.html";
-        }
-    })
 </script>
 
 </html>
