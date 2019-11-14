@@ -31,9 +31,11 @@
                 </div>
                 <div class="right">
                     <div class="shoppingCart">
-                        <i><img src="img/shoppingCart1.png" alt="shoppingCart">
+                        <a href="car.html">
+                            <i><img src="img/shoppingCart1.png" alt="shoppingCart">
                             <img src="img/shoppingCart2.png" alt="shoppingCart"></i>
-                        <a href="car.html">购物车(<span>0</span>)</a>
+                            购物车(<span>0</span>)
+                        </a>
                         <div>
                             购物车中还没有商品，赶紧抢购吧！
                         </div>
@@ -1063,6 +1065,7 @@
         sLogin.html(`亲爱的 ： ${JSON.parse(localStorage.nowLogin)[0].nick}，欢迎登录`).attr('href','#');
         sLogin.prev().prev().html("退出").attr('href','#');
         var exit = sLogin.prev().prev();
+        $(".shoppingCart span").html(localStorage.getItem("length"));
         if(exit.html() == "退出"){
             exit.bind("click",function(){
                 localStorage.nowLogin = "";
