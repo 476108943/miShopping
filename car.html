@@ -183,6 +183,12 @@
 </body>
 <script src="library/jquery.js"></script>
 <script src="library/ajax.js"></script>
+<script>
+    ajaxGet("http://localhost/1910-server/miShopping/library/goods.json", function (res) {
+                var res = JSON.parse(res)
+                ;
+            })
+</script>
 <script src="library/cookie.js"></script>
 <script>
     var hasCall = false;
@@ -224,7 +230,8 @@
         load() {
             var that = this;
             ajaxGet(this.url, function (res) {
-                that.res = JSON.parse(res);
+                that.res = JSON.parse(res)
+                ;
                 // 2.读取到cookie
 
                 that.goods = localStorage.buy ? JSON.parse(localStorage.buy) : [];

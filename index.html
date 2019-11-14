@@ -829,12 +829,24 @@
                 <h2>手机</h2>
                 <div class="page1-left"><img src="img/page-left1.png" alt="page-left"></div>
                 <div class="page1-right">
-                    <ul id="json-list">
+                    <ul class="json-list">
 
 
                     </ul>
                 </div>
             </div>
+            <div class="fenlei">
+                    <img src="img/fenlei2.png" alt="feilei">
+                </div>
+                <div class="page1">
+                    <h2>家电</h2>
+                    <div class="page1-left"><img src="img/page-left2.png" alt="page-left"></div>
+                    <div class="page1-right">
+                        <ul class="json-list">
+    
+                        </ul>
+                    </div>
+                </div>
         </div>
         </div>
         </div>
@@ -1007,7 +1019,8 @@
         }
         display(){
             var str = "";
-            for(var i=0;i<this.res.length;i++){
+            var str1 = "";
+            for(var i=0;i<(this.res.length/2);i++){
                 str += `<li gid="${this.res[i].goodsId}">
                             <a gid="${this.res[i].goodsId}">
                                 <div gid="${this.res[i].goodsId}">
@@ -1019,45 +1032,26 @@
                             </a>
                         </li>`;
             }
-            this.cont.innerHTML = str;
+            for(let j= parseInt(this.res.length/2);j < this.res.length;j++){
+                str1 += `<li gid="${this.res[j].goodsId}">
+                            <a gid="${this.res[j].goodsId}">
+                                <div gid="${this.res[j].goodsId}">
+                                    <img src="${this.res[j].img}" alt="" gid="${this.res[j].goodsId}">
+                                </div>
+                                <h4 gid="${this.res[j].goodsId}">${this.res[j].name}</h4>
+                                <p gid="${this.res[j].goodsId}">${this.res[j].des}</p>
+                                <p class="jg" gid="${this.res[j].goodsId}">${this.res[j].price}<span gid="${this.res[j].goodsId}">元起</span></p>
+                            </a>
+                        </li>`;
+            }
+            this.cont[0].innerHTML = str;
+            this.cont[1].innerHTML = str1;
         }
-        // addEvent(){
-        //     var that = this;
-        //     this.cont.onclick = function(eve){
-        //         if(eve.target.className == "btn"){
-        //             that.id = eve.target.parentNode.getAttribute("index");
-        //             that.setCookie();
-        //         }
-        //     }
-        // }
-        // setCookie(){
-        //     this.goods = getCookie("goods") ? JSON.parse(getCookie("goods")) : [];
-        //     if(this.goods.length == 0){
-        //         this.goods.push({
-        //             id:this.id,
-        //             num:1
-        //         })
-        //     }else{
-        //         for(var i=0;i<this.goods.length;i++){
-        //             if(this.goods[i].id === this.id){
-        //                 this.goods[i].num++;
-        //                 onoff = false;
-        //             }
-        //         }
-        //         if(onoff){
-        //             this.goods.push({
-        //                 id:this.id,
-        //                 num:1
-        //             })
-        //         }
-        //     }
-        //     setCookie("goods",JSON.stringify(this.goods));
-        // }
     }
 
     new List({
         url:"http://localhost/1910-server/miShopping/library/goods.json",
-        cont:document.querySelector("#json-list")
+        cont:document.querySelectorAll(".json-list")
     });
 
     if(localStorage.nowLogin){
@@ -1096,7 +1090,7 @@
         //     }).css("z-index",22);
         // }
     }
-    $("#json-list").on("click",function(e){
+    $(".json-list").on("click",function(e){
         if(e.target.getAttribute("gid")){
             localStorage.display = `${e.target.getAttribute("gid")}`;
             window.location.href="list.html";
